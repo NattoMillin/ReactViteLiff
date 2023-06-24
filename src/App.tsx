@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { Loading } from "./components/Loading";
 function App() {
   return (
