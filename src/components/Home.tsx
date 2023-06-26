@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Input } from "./FormItems/Input";
 import { Options } from "./FormItems/Select";
-import { RtnMsg, getUserInfo } from "./Msg/Message";
+import { RtnMsg, getUserInfo, submitReternMessage } from "./Msg/Message";
 
 export type FormValues = {
   FirstName: string;
@@ -23,13 +23,13 @@ function Home() {
     mode: "onChange",
   });
   const items: string[] = ["female", "male"];
-  const onSubmit = (data: FormValues) => console.log(data);
+  submitReternMessage
   
   console.log("Home Return start")
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(submitReternMessage)}>
         <Input
           control={control}
           name="FirstName"
