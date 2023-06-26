@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   root: "./",
   base: "/ReactViteLiff/",
+  //base: "/",
   publicDir: "public",
   plugins: [react()],
   build: {

@@ -3,6 +3,9 @@ import Home from "./components/Home";
 import { Suspense } from "react";
 import { Loading } from "./components/Loading";
 function App() {
+
+  console.log("looter start")
+  
   return (
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
