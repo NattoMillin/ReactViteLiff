@@ -8,6 +8,9 @@ export type FormValues = {
   SelectItem: string;
 };
 function Home() {
+
+  console.log("Home Start")
+
   const {
     handleSubmit,
     control,
@@ -21,6 +24,9 @@ function Home() {
   });
   const items: string[] = ["female", "male"];
   const onSubmit = (data: FormValues) => console.log(data);
+  
+  console.log("Home Return start")
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
