@@ -13,3 +13,5 @@ export default defineConfig({
   envDir: "./",
 });
 
+
+//base: "/ReactViteLiff/",

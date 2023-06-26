@@ -23,7 +23,6 @@ function Home() {
     mode: "onChange",
   });
   const items: string[] = ["female", "male"];
-  submitReternMessage
   
   console.log("Home Return start")
 
