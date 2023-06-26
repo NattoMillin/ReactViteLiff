@@ -10,7 +10,8 @@ function App() {
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
+          <Route path="/ReactViteLiff/" element={<Home />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
