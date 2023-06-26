@@ -48,6 +48,7 @@ export const getUserInfo = async () => {
 export const submitReternMessage = async (data: FormValues) => {
   console.log("submitReternMessage start");
   const retrunMsg = `${data.FirstName}\n${data.SelectItem}`
+  window.alert(retrunMsg);
   if (liff.isInClient()) {
     // LIFFので動いているのであれば
     await liff
