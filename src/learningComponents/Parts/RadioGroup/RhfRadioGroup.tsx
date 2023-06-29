@@ -1,10 +1,5 @@
 import { useController } from "react-hook-form";
-import type {
-  FieldValues,
-  UseControllerProps,
-  DeepMap,
-  FieldError,
-} from "react-hook-form";
+import type { FieldValues, UseControllerProps } from "react-hook-form";
 import { RadioGroup, RadioGroupProps } from "./RadioGroup";
 
 export type RhfRadioGroupProps<T extends FieldValues> = RadioGroupProps &

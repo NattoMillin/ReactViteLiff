@@ -8,6 +8,12 @@ export type ItemTypes = {
   errors?: FieldErrors<FormValues>;
 };
 
+export type FormInput = {
+  name: string; // TextField用
+  color: string; // Radio用
+  shop: string; // TextField select用
+  inStock: boolean; // Check用
+};
 export const Address = ["tokyo", "osaka", ""] as const; // ''は未選択状態
 export const Gender = ["male", "female", "other"] as const;
 
