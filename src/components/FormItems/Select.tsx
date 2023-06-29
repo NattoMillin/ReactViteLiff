@@ -1,17 +1,17 @@
 import { useController, UseControllerProps } from "react-hook-form";
-import { FormValues } from "../Home";
+import { FormValues } from "../../types/type";
 import { ItemTypes } from "../../types/type";
 
-export const Options = (props: ItemTypes & UseControllerProps<FormValues>) => {
+export const Selects = (props: ItemTypes & UseControllerProps<FormValues>) => {
   const { field } = useController(props);
   return (
-    <label>
-      {field.name}
+    <div>
       <select
-        name={field.name}
-        ref={field.ref}
-        onChange={field.onChange}
-        onBlur={field.onBlur}
+        {...field}
+        // name={field.name}
+        // ref={field.ref}
+        // onChange={field.onChange}
+        // onBlur={field.onBlur}
       >
         {props.Items
           ? props.Items.map((item) => (
@@ -21,6 +21,6 @@ export const Options = (props: ItemTypes & UseControllerProps<FormValues>) => {
             ))
           : null}
       </select>
-    </label>
+    </div>
   );
 };

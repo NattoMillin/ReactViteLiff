@@ -2,12 +2,12 @@ import { useController, UseControllerProps } from "react-hook-form";
 import { FormValues } from "../../types/type";
 import { ItemTypes } from "../../types/type";
 
-export const Input = (props: ItemTypes & UseControllerProps<FormValues>) => {
+export const Textbox = (props: ItemTypes & UseControllerProps<FormValues>) => {
   const { field } = useController(props);
   return (
     <div>
       <p>{props.contentName}</p>
-      <input {...field} placeholder={props.name} />
+      <textarea {...field} placeholder={props.name} />
       {/* <p>{fieldState.isTouched && "Touched"}</p>
       <p>{fieldState.isDirty && "Dirty"}</p>
       <p>{fieldState.invalid ? "invalid" : "valid"}</p> */}

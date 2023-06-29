@@ -1,5 +1,5 @@
 import liff from "@line/liff";
-import { FormValues } from "../Home";
+import { FormValues } from "../../types/type";
 
 export const RtnMsg = async () => {
   console.log("RtnMsg start");
@@ -44,10 +44,9 @@ export const getUserInfo = async () => {
   }
 };
 
-
 export const submitReternMessage = async (data: FormValues) => {
   console.log("submitReternMessage start");
-  const retrunMsg = `${data.FirstName}\n${data.SelectItem}`
+  const retrunMsg = `${data.FirstName}\n${data.KindSelect}`;
   window.alert(retrunMsg);
   if (liff.isInClient()) {
     // LIFFので動いているのであれば

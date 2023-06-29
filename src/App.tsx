@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./learningComponents/Home";
 import { Suspense } from "react";
 import { Loading } from "./components/Loading";
-function App() {
 
-  console.log("looter start")
-  
+function App() {
+  console.log("looter start");
+
   return (
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
