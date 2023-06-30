@@ -4,11 +4,10 @@ import {
   TextFieldProps as MuiTextFieldProps,
 } from "@mui/material";
 
-export type TextFieldProps = MuiTextFieldProps & {
-  inputRef?: MuiTextFieldProps["ref"];
-  errorMessage?: string;
-};
-
+type TextFieldProps = {
+  innerRef?: 
+  errorMessage?:string
+}
 export const TextField: React.FC<TextFieldProps> = ({
   inputRef,
   errorMessage,

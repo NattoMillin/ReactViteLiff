@@ -1,7 +1,7 @@
 import { useController } from "react-hook-form";
 import type { FieldValues, UseControllerProps } from "react-hook-form";
 import { SelectForm, SelectFormProps } from "./SelectForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type RhfSelectFormProps<T extends FieldValues> = Omit<
   SelectFormProps,
@@ -23,6 +23,9 @@ export const RhfSelectForm = <T extends FieldValues>(
     const value = e.target.value as string;
     setValues(value);
   };
+  useEffect(() => {
+    console.log(error?.message)
+  },[error?.message])
   return (
     <SelectForm
       inputRef={ref}
