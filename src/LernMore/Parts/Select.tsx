@@ -40,8 +40,8 @@ export const Select = <T extends FieldValues>(props: RhfTextFieldProps<T>) => {
                 <em>None</em>
               </MenuItem>
               {items.map((item) => (
-                <MenuItem key={item.label} value={item.value}>
-                  {item.label}
+                <MenuItem key={item.label} value={item.label}>
+                  {item.value}
                 </MenuItem>
               ))}
             </MuiSelect>

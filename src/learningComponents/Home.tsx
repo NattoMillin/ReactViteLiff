@@ -10,17 +10,7 @@ import {
   welfare_programme_Check_Item,
 } from "./Inner_Parts";
 import { RhfCheckboxGroup } from "./Parts/CheckBox/RhfCheckBox";
-
-// Employment_Classification: yup.string().required("必須です"),
-// employment: yup.string().required("必須です"),
-// welfare_programme_Check: yup.string(),
-// welfare_programme_Text: yup.string().required("必須です"),
-// heat_health: yup.string().required("必須です"),
-// heat_health_Radio: yup.string(),
-// heat_health_Text: yup.string(),
-// hete: yup.string().required("必須です"),
-// hete_Radio: yup.string(),
-// hete_Text: yup.string(),
+import { useEffect } from "react";
 
 function Home() {
   const { control, handleSubmit } = useForm<FormType>({
@@ -41,9 +31,15 @@ function Home() {
   });
 
   const watched_heat_health_experience = useWatch({
-    name: "heat_health",
+    name: "Employment_Classification",
     control,
+    defaultValue:""
   });
+  
+  useEffect(() => {
+    console.log(watched_heat_health_experience)
+  },[watched_heat_health_experience])
+  
   const watched_heat_health_experience_YesNo = useWatch({
     name: "heat_health_Radio",
     control,

@@ -19,19 +19,6 @@ export const RhfTextField = <T extends FieldValues>(
     fieldState: { error },
   } = useController<T>({ name, control });
 
-  const watched_SummerHeatRadio = useWatch({
-    control,
-    name: name,
-  });
-
-  const logCount = useCallback(() => {
-    console.log(watched_SummerHeatRadio);
-  }, [watched_SummerHeatRadio]);
-
-  useEffect(() => {
-    logCount();
-  }, [logCount]);
-
   return (
     <TextField
       inputRef={ref}

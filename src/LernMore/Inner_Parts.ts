@@ -1,19 +1,26 @@
+import { CheckBoxItemType } from "./Parts/CheckboxGroup";
 import { RadioItemType } from "./Parts/RadioGroup";
 import { SelectItemType } from "./Parts/Select";
 
 export const Employment_Classification_item: SelectItemType[] = [
   {
-    value: "regular",
-    label: "正社員",
+    value: "正社員",
+    label: "regular",
   },
   {
-    value: "temporary",
-    label: "派遣社員・期間社員",
+    value: "派遣社員・期間社員",
+    label: "temporary",
   },
   {
-    value: "Outward",
-    label: "出向者",
+    value: "出向者",
+    label: "Outward",
   },
+];
+export const CheckItems: CheckBoxItemType[] = [
+  { label: "冷風服をあっせん価格にて販売", checked: false },
+  { label: "休憩所に冷水機", checked: false },
+  { label: "アイスの無料配布", checked: false },
+  { label: "スポーツドリンク50円", checked: false },
 ];
 
 export const employment_item = [
