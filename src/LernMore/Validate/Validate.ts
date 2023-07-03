@@ -9,7 +9,7 @@ const onNewlineValidator = (errorMessage: string) =>
 export const schema = yup.object({
   Employment_Classification: yup.string().required("必須です"),
   // employment: yup.string().required("必須です"),
-  // welfare_programme_Check: yup.array().required("必須です"),
+  welfare_programme_Check: yup.array().of(yup.boolean()).max(2, "最大2つです。"),
   welfare_programme_Text: yup.string().required("必須です"),
   heat_health: yup.string().required("必須です"),
   // heat_health_Radio: yup.string().required("必須です"),
@@ -22,7 +22,7 @@ export const schema = yup.object({
 export type FormType = {
   Employment_Classification: string;
   // employment: string;
-  welfare_programme_Check?: boolean[];
+  welfare_programme_Check: boolean[];
   welfare_programme_Text: string;
   heat_health: string;
   // heat_health_Radio: string;
