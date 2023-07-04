@@ -20,7 +20,7 @@ import {
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
 import { RadioGroup } from "./Parts/RadioGroup";
-import { CheckBoxGroup } from "./Parts/CheckboxGroup";
+// import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
   // const checkItems: boolean[] = CheckItems.map((element) => element.checked);
 
