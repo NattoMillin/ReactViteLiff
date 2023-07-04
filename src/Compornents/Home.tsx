@@ -20,6 +20,7 @@ import {
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
 import { RadioGroup } from "./Parts/RadioGroup";
+import { sendText } from "../sendMessage/SendMassage";
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
   // const checkItems: boolean[] = CheckItems.map((element) => element.checked);
@@ -52,7 +53,7 @@ function Home() {
   // });
 
   const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
-    console.log(`submit: ${data.welfare_programme_Check}`);
+    sendText(data.Employment_Classification);
 
   return (
     <Stack
