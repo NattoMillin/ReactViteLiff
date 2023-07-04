@@ -1,10 +1,10 @@
 import * as yup from "yup";
 
-const onNewlineValidator = (errorMessage: string) =>
-  yup
-    .array()
-    .test("no-newline", errorMessage, (value) => !value?.includes("@"))
-    .required("このフィールドは必須です。");
+// const onNewlineValidator = (errorMessage: string) =>
+//   yup
+//     .array()
+//     .test("no-newline", errorMessage, (value) => !value?.includes("@"))
+//     .required("このフィールドは必須です。");
 
 export const schema = yup.object({
   Employment_Classification: yup.string().required("必須です"),

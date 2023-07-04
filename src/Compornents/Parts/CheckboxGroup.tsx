@@ -2,7 +2,6 @@ import { Controller, FieldValues, UseControllerProps } from "react-hook-form";
 import {
   FormControl,
   FormControlLabel,
-  FormLabel,
   FormGroup,
   Checkbox,
 } from "@mui/material";
@@ -23,7 +22,9 @@ export type RhfTCheckboxProps<T extends FieldValues> = UseControllerProps<T> &
 export const CheckBoxGroup = <T extends FieldValues>(
   props: RhfTCheckboxProps<T>
 ) => {
-  const { name, control, label, item, styles } = props;
+  const { name, control,
+    //  label,
+      item, styles } = props;
 
   return (
     <>
