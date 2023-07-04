@@ -16,11 +16,12 @@ export const Employment_Classification_item: SelectItemType[] = [
     label: "Outward",
   },
 ];
+
 export const CheckItems: CheckBoxItemType[] = [
-  { label: "冷風服をあっせん価格にて販売", checked: false },
-  { label: "休憩所に冷水機", checked: false },
-  { label: "アイスの無料配布", checked: false },
-  { label: "スポーツドリンク50円", checked: false },
+  { id: "Kuutyou", name: "冷風服をあっせん価格にて販売", checked: false },
+  { id: "Reisui", name: "休憩所に冷水機", checked: false },
+  { id: "Ice", name: "アイスの無料配布", checked: false },
+  { id: "Drink", name: "スポーツドリンク50円", checked: false },
 ];
 
 export const employment_item = [

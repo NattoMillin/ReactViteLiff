@@ -1,6 +1,8 @@
-import { SubmitHandler, useForm, 
+import {
+  SubmitHandler,
+  useForm,
   // useWatch
- } from "react-hook-form";
+} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, schema } from "./Validate/Validate";
 import {
@@ -61,16 +63,13 @@ function Home() {
         styles={{ minWidth: 120, m: 3 }}
         items={Employment_Classification_item}
       />
-      {CheckItems.map((item, index) => (
-        <CheckBoxGroup
-          key={item.label}
-          name={`welfare_programme_Check.${index}`}
-          label="Check"
-          control={control}
-          styles={{ minWidth: 120, m: 3 }}
-          item={item}
-        />
-      ))}
+      <CheckBoxGroup
+        name={`welfare_programme_Check`}
+        label="Check"
+        control={control}
+        styles={{ minWidth: 120, m: 3 }}
+        items={CheckItems}
+      />
 
       <RadioGroup
         name="heat_health"

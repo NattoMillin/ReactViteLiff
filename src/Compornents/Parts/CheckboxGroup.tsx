@@ -4,17 +4,20 @@ import {
   FormControlLabel,
   FormGroup,
   Checkbox,
+  FormHelperText,
 } from "@mui/material";
 import { MuiStyles } from "../type";
 
 export type CheckBoxItemType = {
+  id: string;
+  name: string;
   checked: boolean;
-  label: string;
+  disabled?: boolean;
 };
 type CheckBoxTypes = {
   label?: string;
   styles?: MuiStyles;
-  item: CheckBoxItemType;
+  items: CheckBoxItemType[];
 };
 export type RhfTCheckboxProps<T extends FieldValues> = UseControllerProps<T> &
   CheckBoxTypes;
@@ -22,9 +25,13 @@ export type RhfTCheckboxProps<T extends FieldValues> = UseControllerProps<T> &
 export const CheckBoxGroup = <T extends FieldValues>(
   props: RhfTCheckboxProps<T>
 ) => {
-  const { name, control,
+  const {
+    name,
+    control,
     //  label,
-      item, styles } = props;
+    items,
+    styles,
+  } = props;
 
   return (
     <>
@@ -33,12 +40,15 @@ export const CheckBoxGroup = <T extends FieldValues>(
           <Controller
             name={name}
             control={control}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <>
-                <FormControlLabel
-                  label={item.label}
-                  control={<Checkbox {...field} checked={field.value} />}
-                />
+                {items.map((item) => (
+                  <FormControlLabel
+                    label={item.name}
+                    control={<Checkbox {...field} checked={field.value} />}
+                  />
+                ))}
+                <FormHelperText>{fieldState.error?.message}</FormHelperText>
               </>
             )}
           />
