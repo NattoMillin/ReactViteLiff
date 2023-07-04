@@ -7,6 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, schema } from "./Validate/Validate";
 import {
   Button,
+  Checkbox,
+  FormControlLabel,
   Stack,
   //  TextField
 } from "@mui/material";
@@ -20,13 +22,18 @@ import { Select } from "./Parts/Select";
 import { RadioGroup } from "./Parts/RadioGroup";
 import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
-  const checkItems: boolean[] = CheckItems.map((element) => element.checked);
+  // const checkItems: boolean[] = CheckItems.map((element) => element.checked);
 
-  const { control, handleSubmit } = useForm<FormType>({
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<FormType>({
     defaultValues: {
       Employment_Classification: "",
       // employment: "",
-      welfare_programme_Check: checkItems,
+      welfare_programme_Check: [],
       welfare_programme_Text: "",
       heat_health: "experience",
       // heat_health_Radio: "",
@@ -63,13 +70,27 @@ function Home() {
         styles={{ minWidth: 120, m: 3 }}
         items={Employment_Classification_item}
       />
-      <CheckBoxGroup
+      {CheckItems.map((item) => (
+        <FormControlLabel
+          label={item.name}
+          value={item.id}
+          id={item.id}
+          control={<Checkbox {...register("welfare_programme_Check")} />}
+        />
+      ))}
+      {errors.welfare_programme_Check && (
+        <p>
+          {errors.welfare_programme_Check.type}:{" "}
+          {errors.welfare_programme_Check.message}
+        </p>
+      )}
+      {/* <CheckBoxGroup
         name={`welfare_programme_Check`}
         label="Check"
         control={control}
         styles={{ minWidth: 120, m: 3 }}
         items={CheckItems}
-      />
+      /> */}
 
       <RadioGroup
         name="heat_health"
