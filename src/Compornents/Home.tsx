@@ -28,7 +28,6 @@ import { sendText } from "../sendMessage/SendMassage";
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
   // const checkItems: boolean[] = CheckItems.map((element) => element.checked);
-
   const {
     control,
     handleSubmit,
@@ -87,7 +86,7 @@ function Home() {
         教えてください。
       </p>
       <Box>
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h5" gutterBottom>
           今年度の取り組みでよかったものを選択してください。(最大2つ)
         </Typography>
         {CheckItems.map((item) => (
