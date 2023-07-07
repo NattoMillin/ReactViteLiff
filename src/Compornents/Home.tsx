@@ -6,21 +6,26 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, schema } from "./Validate/Validate";
 import {
+  Box,
   Button,
   Checkbox,
   FormControlLabel,
   Stack,
+  Typography,
   //  TextField
 } from "@mui/material";
 import {
   CheckItems,
   Employment_Classification_item,
+  Employment_item,
   Radio_experience,
 } from "./Inner_Parts";
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
 import { RadioGroup } from "./Parts/RadioGroup";
 import { sendText } from "../sendMessage/SendMassage";
+import "@fontsource/roboto/300.css";
+
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
   // const checkItems: boolean[] = CheckItems.map((element) => element.checked);
@@ -33,7 +38,7 @@ function Home() {
   } = useForm<FormType>({
     defaultValues: {
       Employment_Classification: "",
-      // employment: "",
+      employment: "",
       welfare_programme_Check: [],
       welfare_programme_Text: "",
       heat_health: "experience",
@@ -63,7 +68,13 @@ function Home() {
       spacing={2}
       sx={{ m: 2, width: "25ch" }}
     >
-      <TextField name="welfare_programme_Text" control={control} />
+      <Select
+        name="employment"
+        control={control}
+        label="Select"
+        styles={{ minWidth: 120, m: 3 }}
+        items={Employment_item}
+      />
       <Select
         name="Employment_Classification"
         control={control}
@@ -71,20 +82,31 @@ function Home() {
         styles={{ minWidth: 120, m: 3 }}
         items={Employment_Classification_item}
       />
-      {CheckItems.map((item) => (
-        <FormControlLabel
-          label={item.name}
-          value={item.id}
-          id={item.id}
-          control={<Checkbox {...register("welfare_programme_Check")} />}
-        />
-      ))}
-      {errors.welfare_programme_Check && (
-        <p>
-          {errors.welfare_programme_Check.type}:{" "}
-          {errors.welfare_programme_Check.message}
-        </p>
-      )}
+      <p>今年も異常気象と言われ、工場内の温度も高くなることが見込まれます。</p>
+      <p>
+        会社の熱中症対策の取り組みとして、これは良かった・来年はこんなことをしてほしいなど
+        教えてください。
+      </p>
+      <Box>
+        <Typography variant="h3" gutterBottom>
+          今年度の取り組みでよかったものを選択してください。(最大2つ)
+        </Typography>
+        {CheckItems.map((item) => (
+          <FormControlLabel
+            label={item.name}
+            value={item.id}
+            id={item.id}
+            control={<Checkbox {...register("welfare_programme_Check")} />}
+          />
+        ))}
+        {errors.welfare_programme_Check && (
+          <p>
+            {errors.welfare_programme_Check.type}:{" "}
+            {errors.welfare_programme_Check.message}
+          </p>
+        )}
+      </Box>
+      <TextField name="welfare_programme_Text" control={control} />
       {/* <CheckBoxGroup
         name={`welfare_programme_Check`}
         label="Check"

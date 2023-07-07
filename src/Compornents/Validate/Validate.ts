@@ -16,7 +16,7 @@ const validateLunchBoxStyle = function (this: any) {
 
 export const schema = yup.object({
   Employment_Classification: yup.string().required("必須です"),
-  // employment: yup.string().required("必須です"),
+  employment: yup.string().required("必須です"),
   welfare_programme_Check: yup
     .array()
     .of(yup.string())
@@ -32,7 +32,7 @@ export const schema = yup.object({
 
 export type FormType = {
   Employment_Classification: string;
-  // employment: string;
+  employment: string;
   welfare_programme_Check: string[];
   welfare_programme_Text: string;
   heat_health: string;

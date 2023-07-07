@@ -2,6 +2,16 @@ import { CheckBoxItemType } from "./Parts/CheckboxGroup";
 import { RadioItemType } from "./Parts/RadioGroup";
 import { SelectItemType } from "./Parts/Select";
 
+export const Employment_item: SelectItemType[] = [
+  {
+    value: "大分工場",
+    label: "Ooita",
+  },
+  {
+    value: "福岡工場",
+    label: "Fukuoka",
+  },
+];
 export const Employment_Classification_item: SelectItemType[] = [
   {
     value: "正社員",
