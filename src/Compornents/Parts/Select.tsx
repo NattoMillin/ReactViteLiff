@@ -36,9 +36,6 @@ export const Select = <T extends FieldValues>(props: RhfTextFieldProps<T>) => {
               onChange={(e: any) => onChange(e)}
               {...rest}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
               {items.map((item) => (
                 <MenuItem key={item.label} value={item.label}>
                   {item.value}
