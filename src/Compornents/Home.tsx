@@ -69,9 +69,9 @@ function Home() {
       spacing={2}
       sx={{ m: 2, width: "500px" }}
     >
-        <Typography variant="h6" gutterBottom>
-          今年度の取り組みでよかったものを選択してください。(最大2つ)
-        </Typography>
+      <Typography variant="h6" gutterBottom>
+        今年度の取り組みでよかったものを選択してください。テスト(最大2つ)
+      </Typography>
       <Select
         name="employment"
         control={control}
