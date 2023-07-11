@@ -46,7 +46,6 @@ export const RadioGroup = <T extends FieldValues>(props: RhfTRadioProps<T>) => {
             </MuiRadioGroup>
             <FormHelperText>{fieldState.error?.message}</FormHelperText>
           </FormControl>
-          <div>{rest.value}</div>
         </>
       )}
     />

@@ -23,7 +23,6 @@ export const TextField = <T extends FieldValues>(
           error={fieldState.invalid}
           multiline
           rows={3}
-          maxRows={3}
           helperText={fieldState.error?.message}
         />
       )}

@@ -17,6 +17,7 @@ import {
   Employment_Classification_item,
   Employment_item,
   Radio_experience,
+  Radio_YesNo,
 } from "./Inner_Parts";
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
@@ -51,7 +52,11 @@ function Home() {
   });
 
   const watched_heat_health_experience = useWatch({
-    name: "welfare_programme_Check",
+    name: "heat_health",
+    control,
+  });
+  const watched_heat_health_experience = useWatch({
+    name: "heat_health",
     control,
   });
 
@@ -71,6 +76,8 @@ function Home() {
       sx={{ m: 2, width: "500px" }}
     >
       <Box className={styles.boxs}>
+        {" "}
+        {/* 勤務先SelectBox */}
         <Typography variant="body2" gutterBottom>
           <span className={styles.question}>Q1</span>
           今年度の取り組みでよかったものを選択してください。テスト(最大2つ)
@@ -84,6 +91,8 @@ function Home() {
         />
       </Box>
       <Box className={styles.boxs}>
+        {" "}
+        {/* 勤務区分SelectBox */}
         <Typography variant="body2" gutterBottom>
           <span className={styles.question}>Q2</span>
           今年度の取り組みでよかったものを選択してください。(最大2つ)
@@ -97,6 +106,8 @@ function Home() {
         />
       </Box>
       <Box className={styles.boxs}>
+        {" "}
+        {/* 熱中症対策の取り組みSelectBox */}
         <Typography variant="body1" gutterBottom className={styles.bodys}>
           今年も異常気象と言われ、工場内の温度も高くなることが見込まれます。
         </Typography>
@@ -107,7 +118,6 @@ function Home() {
             教えてください。(最大2つ)
           </div>
         </Typography>
-
         <FormControl error className={styles.boxs_choice}>
           {CheckItems.map((item) => (
             <FormControlLabel
@@ -123,6 +133,8 @@ function Home() {
         </FormControl>
       </Box>
       <Box className={styles.boxs}>
+        {" "}
+        {/* 来年度の取り組みSelectBox */}
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q4</span>
           <div>
@@ -135,13 +147,35 @@ function Home() {
           styles={{ width: "100%" }}
         />
       </Box>
-      <RadioGroup
-        name="heat_health"
-        control={control}
-        label="Heat"
-        styles={{ minWidth: 120, m: 3 }}
-        items={Radio_experience}
-      />
+      <Box className={styles.boxs}>
+        {" "}
+        {/* 来年度の取り組みSelectBox */}
+        <RadioGroup
+          name="heat_health"
+          control={control}
+          styles={{ minWidth: 120, m: 3 }}
+          items={Radio_experience}
+        />
+        {watched_heat_health_experience == "experience" ? (
+          <RadioGroup
+            name="heat_health_Radio"
+            control={control}
+            styles={{ minWidth: 120, m: 3 }}
+            items={Radio_YesNo}
+          />
+        ) : null}
+        <Typography variant="body2" gutterBottom className={styles.inline}>
+          <span className={styles.question}>Q4</span>
+          <div>
+            来年度にこんな取り組みをしてほしいというものがあれば、教えてください。
+          </div>
+        </Typography>
+        <TextField
+          name="welfare_programme_Text"
+          control={control}
+          styles={{ width: "100%" }}
+        />
+      </Box>
       <Button variant="contained" type="submit">
         Submit
       </Button>
