@@ -24,3 +24,10 @@
   display: flex;
   flex-direction: row;
 }
+.appear {
+  height: 100%;
+}
+.unappear {
+  height: 0;
+  overflow: hidden;
+}

@@ -1,3 +1,4 @@
+import React from "react";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, schema } from "./Validate/Validate";
@@ -25,6 +26,7 @@ import { RadioGroup } from "./Parts/RadioGroup";
 import { sendText } from "../sendMessage/SendMassage";
 import { useEffect } from "react";
 import styles from "./styles/Home.module.css";
+import { HeatHelth } from "./Compornent/HeatHelth";
 
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
@@ -41,8 +43,8 @@ function Home() {
       welfare_programme_Check: [],
       welfare_programme_Text: "",
       heat_health: "experience",
-      // heat_health_Radio: "",
-      // heat_health_Text: "",
+      heat_health_Radio: "",
+      heat_health_Text: "",
       // hete: "",
       // hete_Radio: "",
       // hete_Text: "",
@@ -55,14 +57,14 @@ function Home() {
     name: "heat_health",
     control,
   });
-  const watched_heat_health_experience = useWatch({
-    name: "heat_health",
+  const watched_heat_health_Radio = useWatch({
+    name: "heat_health_Radio",
     control,
   });
 
   useEffect(() => {
-    console.log(watched_heat_health_experience);
-  }, [watched_heat_health_experience]);
+    console.log(watched_heat_health_Radio);
+  }, [watched_heat_health_Radio]);
 
   const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
     sendText(data.Employment_Classification);
@@ -147,35 +149,7 @@ function Home() {
           styles={{ width: "100%" }}
         />
       </Box>
-      <Box className={styles.boxs}>
-        {" "}
-        {/* 来年度の取り組みSelectBox */}
-        <RadioGroup
-          name="heat_health"
-          control={control}
-          styles={{ minWidth: 120, m: 3 }}
-          items={Radio_experience}
-        />
-        {watched_heat_health_experience == "experience" ? (
-          <RadioGroup
-            name="heat_health_Radio"
-            control={control}
-            styles={{ minWidth: 120, m: 3 }}
-            items={Radio_YesNo}
-          />
-        ) : null}
-        <Typography variant="body2" gutterBottom className={styles.inline}>
-          <span className={styles.question}>Q4</span>
-          <div>
-            来年度にこんな取り組みをしてほしいというものがあれば、教えてください。
-          </div>
-        </Typography>
-        <TextField
-          name="welfare_programme_Text"
-          control={control}
-          styles={{ width: "100%" }}
-        />
-      </Box>
+      <HeatHelth control={control} name="welfare_programme_Text" />
       <Button variant="contained" type="submit">
         Submit
       </Button>
