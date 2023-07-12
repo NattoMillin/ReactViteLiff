@@ -21,6 +21,8 @@ export const TextField = <T extends FieldValues>(
           label={label}
           sx={styles}
           error={fieldState.invalid}
+          multiline
+          rows={3}
           helperText={fieldState.error?.message}
         />
       )}

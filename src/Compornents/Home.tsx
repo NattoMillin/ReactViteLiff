@@ -1,3 +1,4 @@
+import React from "react";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, schema } from "./Validate/Validate";
@@ -17,12 +18,15 @@ import {
   Employment_Classification_item,
   Employment_item,
   Radio_experience,
+  Radio_YesNo,
 } from "./Inner_Parts";
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
 import { RadioGroup } from "./Parts/RadioGroup";
 import { sendText } from "../sendMessage/SendMassage";
 import { useEffect } from "react";
+import styles from "./styles/Home.module.css";
+import { HeatHelth } from "./Compornent/HeatHelth";
 
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
@@ -39,8 +43,8 @@ function Home() {
       welfare_programme_Check: [],
       welfare_programme_Text: "",
       heat_health: "experience",
-      // heat_health_Radio: "",
-      // heat_health_Text: "",
+      heat_health_Radio: "",
+      heat_health_Text: "",
       // hete: "",
       // hete_Radio: "",
       // hete_Text: "",
@@ -50,13 +54,17 @@ function Home() {
   });
 
   const watched_heat_health_experience = useWatch({
-    name: "welfare_programme_Check",
+    name: "heat_health",
+    control,
+  });
+  const watched_heat_health_Radio = useWatch({
+    name: "heat_health_Radio",
     control,
   });
 
   useEffect(() => {
-    console.log(watched_heat_health_experience);
-  }, [watched_heat_health_experience]);
+    console.log(watched_heat_health_Radio);
+  }, [watched_heat_health_Radio]);
 
   const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
     sendText(data.Employment_Classification);
@@ -69,34 +77,50 @@ function Home() {
       spacing={2}
       sx={{ m: 2, width: "500px" }}
     >
-      <Typography variant="h6" gutterBottom>
-        今年度の取り組みでよかったものを選択してください。テスト(最大2つ)
-      </Typography>
-      <Select
-        name="employment"
-        control={control}
-        label="勤務先"
-        styles={{ minWidth: 120 }}
-        items={Employment_item}
-      />
-      <Select
-        name="Employment_Classification"
-        control={control}
-        label="勤務区分"
-        styles={{ minWidth: 120 }}
-        items={Employment_Classification_item}
-      />
-      <p>今年も異常気象と言われ、工場内の温度も高くなることが見込まれます。</p>
-      <p>
-        会社の熱中症対策の取り組みとして、これは良かった・来年はこんなことをしてほしいなど
-        教えてください。
-      </p>
-      <Box>
-        <Typography variant="h6" gutterBottom>
+      <Box className={styles.boxs}>
+        {" "}
+        {/* 勤務先SelectBox */}
+        <Typography variant="body2" gutterBottom>
+          <span className={styles.question}>Q1</span>
+          今年度の取り組みでよかったものを選択してください。テスト(最大2つ)
+        </Typography>
+        <Select
+          name="employment"
+          control={control}
+          label="勤務先"
+          styles={{ minWidth: 120 }}
+          items={Employment_item}
+        />
+      </Box>
+      <Box className={styles.boxs}>
+        {" "}
+        {/* 勤務区分SelectBox */}
+        <Typography variant="body2" gutterBottom>
+          <span className={styles.question}>Q2</span>
           今年度の取り組みでよかったものを選択してください。(最大2つ)
         </Typography>
-
-        <FormControl fullWidth>
+        <Select
+          name="Employment_Classification"
+          control={control}
+          label="勤務区分"
+          styles={{ minWidth: 120 }}
+          items={Employment_Classification_item}
+        />
+      </Box>
+      <Box className={styles.boxs}>
+        {" "}
+        {/* 熱中症対策の取り組みSelectBox */}
+        <Typography variant="body1" gutterBottom className={styles.bodys}>
+          今年も異常気象と言われ、工場内の温度も高くなることが見込まれます。
+        </Typography>
+        <Typography variant="body2" gutterBottom className={styles.inline}>
+          <span className={styles.question}>Q3</span>
+          <div>
+            会社の熱中症対策の取り組みとして、これは良かった・来年はこんなことをしてほしいなど
+            教えてください。(最大2つ)
+          </div>
+        </Typography>
+        <FormControl error className={styles.boxs_choice}>
           {CheckItems.map((item) => (
             <FormControlLabel
               label={item.name}
@@ -110,27 +134,22 @@ function Home() {
           </FormHelperText>
         </FormControl>
       </Box>
-      <Box>
-        <Typography variant="h6" gutterBottom>
-          来年度にこんな取り組みをしてほしいというものを教えてください。
+      <Box className={styles.boxs}>
+        {" "}
+        {/* 来年度の取り組みSelectBox */}
+        <Typography variant="body2" gutterBottom className={styles.inline}>
+          <span className={styles.question}>Q4</span>
+          <div>
+            来年度にこんな取り組みをしてほしいというものがあれば、教えてください。
+          </div>
         </Typography>
-        <TextField name="welfare_programme_Text" control={control} />
+        <TextField
+          name="welfare_programme_Text"
+          control={control}
+          styles={{ width: "100%" }}
+        />
       </Box>
-      {/* <CheckBoxGroup
-        name={`welfare_programme_Check`}
-        label="Check"
-        control={control}
-        styles={{ minWidth: 120, m: 3 }}
-        items={CheckItems}
-      /> */}
-
-      <RadioGroup
-        name="heat_health"
-        control={control}
-        label="Heat"
-        styles={{ minWidth: 120, m: 3 }}
-        items={Radio_experience}
-      />
+      <HeatHelth control={control} name="welfare_programme_Text" />
       <Button variant="contained" type="submit">
         Submit
       </Button>

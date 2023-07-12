@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+.boxs {
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+  padding: 15px;
+}
+.question {
+  font-family: "Oswald", sans-serif;
+  margin: auto 10px;
+  font-size: medium;
+  padding: 2px;
+  border-bottom: 1px solid rgb(45, 103, 211);
+  text-align: center;
+}
+.boxs_choice {
+  width: 100%;
+  margin: 0 auto !important;
+}
+.bodys {
+  margin-bottom: 10px !important;
+}
+.inline {
+  display: flex;
+  flex-direction: row;
+}
+.appear {
+  height: 100%;
+}
+.unappear {
+  height: 0;
+  overflow: hidden;
+}
