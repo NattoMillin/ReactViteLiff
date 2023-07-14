@@ -7,10 +7,9 @@
 }
 .question {
   font-family: "Oswald", sans-serif;
-  margin: auto 10px;
+  margin-right: 10px;
   font-size: medium;
   padding: 2px;
-  border-bottom: 1px solid rgb(45, 103, 211);
   text-align: center;
 }
 .boxs_choice {
@@ -23,11 +22,10 @@
 .inline {
   display: flex;
   flex-direction: row;
+  position: relative;
+  align-items: center;
+  border-bottom: 1px solid rgb(45, 103, 211);
 }
-.appear {
+.inline div {
   height: 100%;
-}
-.unappear {
-  height: 0;
-  overflow: hidden;
 }

@@ -78,9 +78,7 @@ function Home() {
       sx={{ m: 2, width: "500px" }}
     >
       <Box className={styles.boxs}>
-        {" "}
-        {/* 勤務先SelectBox */}
-        <Typography variant="body2" gutterBottom>
+        <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q1</span>
           今年度の取り組みでよかったものを選択してください。テスト(最大2つ)
         </Typography>
@@ -93,9 +91,7 @@ function Home() {
         />
       </Box>
       <Box className={styles.boxs}>
-        {" "}
-        {/* 勤務区分SelectBox */}
-        <Typography variant="body2" gutterBottom>
+        <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q2</span>
           今年度の取り組みでよかったものを選択してください。(最大2つ)
         </Typography>
@@ -149,7 +145,13 @@ function Home() {
           styles={{ width: "100%" }}
         />
       </Box>
-      <HeatHelth control={control} name="welfare_programme_Text" />
+      <Box className={styles.boxs}>
+        <Typography variant="body2" gutterBottom className={styles.inline}>
+          <span className={styles.question}>Q5</span>
+          <div>工場内の暑さで、体調・気分が悪くなったことはありますか？</div>
+        </Typography>
+        <HeatHelth control={control} name="welfare_programme_Text" />
+      </Box>
       <Button variant="contained" type="submit">
         Submit
       </Button>
