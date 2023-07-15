@@ -1,4 +1,9 @@
-import { Controller, FieldValues, UseControllerProps } from "react-hook-form";
+import {
+  Controller,
+  FieldValues,
+  Path,
+  UseControllerProps,
+} from "react-hook-form";
 import {
   FormControl,
   FormControlLabel,
@@ -15,7 +20,12 @@ import { useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import HeartStyle from "./HeatHelth.module.css";
 
-export type RhfTextFieldProps<T extends FieldValues> = UseControllerProps<T>;
+type Names<T extends FieldValues> = {
+  SecondRadio: Path<T>;
+  ThardText: Path<T>;
+};
+export type RhfTextFieldProps<T extends FieldValues> = UseControllerProps<T> &
+  Names<T>;
 
 export const HeatHelth = <T extends FieldValues>(
   props: RhfTextFieldProps<T>
@@ -24,16 +34,21 @@ export const HeatHelth = <T extends FieldValues>(
   const [HeatValueRadio, setHeatValueRadio] = useState("");
   const [HeatValueText, setHeatValueText] = useState("");
 
+  const [showContents, setShowContents] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+  const childElement = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    HeatValue == "never"
-      ? setHeatValueRadio("") & setHeatValueText("")
-      : undefined;
+    if (HeatValue == "never") {
+      setHeatValueRadio("");
+      setHeatValueText("");
+    }
   }, [HeatValue]);
 
   return (
     <Box className={HeartStyle.container}>
       <Controller
-        name={"heat_health"}
+        name={props.name}
         control={props.control}
         render={({ field: { onChange, ...rest }, fieldState }) => (
           <>
@@ -63,45 +78,34 @@ export const HeatHelth = <T extends FieldValues>(
       />
 
       <Controller
-        name={"heat_health_Radio"}
+        name={props.SecondRadio}
         control={props.control}
         render={({ field: { onChange, ...rest }, fieldState }) => (
-          <div className={HeartStyle.container}>
-            <div
-              className={
-                HeatValue === "experience"
-                  ? `${HeartStyle.appear}`
-                  : `${HeartStyle.unappear}`
-              }
+          <div ref={childElement} className={HeartStyle.container}>
+            <FormControl
+              fullWidth
+              error={fieldState.invalid}
+              sx={{ minWidth: 120 }}
             >
-              <FormControl
-                fullWidth
-                error={fieldState.invalid}
-                sx={{ minWidth: 120 }}
-              >
-                <MuiRadioGroup
-                  name={"heat_health_Radio"}
-                  value={HeatValueRadio}
-                >
-                  {Radio_YesNo.map((item: RadioItemType) => (
-                    <FormControlLabel
-                      {...rest}
-                      key={item.label}
-                      onChange={() => setHeatValueRadio(item.value)}
-                      value={item.value}
-                      control={<Radio />}
-                      label={item.label}
-                    />
-                  ))}
-                </MuiRadioGroup>
-                <FormHelperText>{fieldState.error?.message}</FormHelperText>
-              </FormControl>
-            </div>
+              <MuiRadioGroup name={"heat_health_Radio"} value={HeatValueRadio}>
+                {Radio_YesNo.map((item: RadioItemType) => (
+                  <FormControlLabel
+                    {...rest}
+                    key={item.label}
+                    onChange={() => setHeatValueRadio(item.value)}
+                    value={item.value}
+                    control={<Radio />}
+                    label={item.label}
+                  />
+                ))}
+              </MuiRadioGroup>
+              <FormHelperText>{fieldState.error?.message}</FormHelperText>
+            </FormControl>
           </div>
         )}
       />
       <Controller
-        name={"welfare_programme_Text"}
+        name={props.ThardText}
         control={props.control}
         render={({ field: { onChange, ...rest }, fieldState }) => (
           <div className={HeartStyle.container}>

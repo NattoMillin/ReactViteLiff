@@ -1,4 +1,3 @@
-import React from "react";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, schema } from "./Validate/Validate";
@@ -17,16 +16,13 @@ import {
   CheckItems,
   Employment_Classification_item,
   Employment_item,
-  Radio_experience,
-  Radio_YesNo,
 } from "./Inner_Parts";
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
-import { RadioGroup } from "./Parts/RadioGroup";
 import { sendText } from "../sendMessage/SendMassage";
-import { useEffect } from "react";
 import styles from "./styles/Home.module.css";
 import { HeatHelth } from "./Compornent/HeatHelth";
+import { useEffect } from "react";
 
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
@@ -53,18 +49,15 @@ function Home() {
     resolver: yupResolver(schema),
   });
 
-  const watched_heat_health_experience = useWatch({
-    name: "heat_health",
+  const useWacthcheck = useWatch({
     control,
-  });
-  const watched_heat_health_Radio = useWatch({
-    name: "heat_health_Radio",
-    control,
+    name: "welfare_programme_Check", // without supply name will watch the entire form, or ['firstName', 'lastName'] to watch both
+    defaultValue: [], // default value before the render
   });
 
   useEffect(() => {
-    console.log(watched_heat_health_Radio);
-  }, [watched_heat_health_Radio]);
+    console.log(useWacthcheck);
+  }, [useWacthcheck]);
 
   const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
     sendText(data.Employment_Classification);
@@ -104,8 +97,6 @@ function Home() {
         />
       </Box>
       <Box className={styles.boxs}>
-        {" "}
-        {/* 熱中症対策の取り組みSelectBox */}
         <Typography variant="body1" gutterBottom className={styles.bodys}>
           今年も異常気象と言われ、工場内の温度も高くなることが見込まれます。
         </Typography>
@@ -131,8 +122,6 @@ function Home() {
         </FormControl>
       </Box>
       <Box className={styles.boxs}>
-        {" "}
-        {/* 来年度の取り組みSelectBox */}
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q4</span>
           <div>
@@ -150,7 +139,12 @@ function Home() {
           <span className={styles.question}>Q5</span>
           <div>工場内の暑さで、体調・気分が悪くなったことはありますか？</div>
         </Typography>
-        <HeatHelth control={control} name="welfare_programme_Text" />
+        <HeatHelth
+          control={control}
+          name="heat_health"
+          SecondRadio="heat_health_Radio"
+          ThardText="heat_health_Text"
+        />
       </Box>
       <Button variant="contained" type="submit">
         Submit
