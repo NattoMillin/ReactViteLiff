@@ -18,6 +18,7 @@ export const schema = yup.object({
     .defined()
     .test("boolCheck", "2つ以下で選択してください", validateLunchBoxStyle),
   heat_health: yup.string().required("必須です"),
+  hete: yup.string().required("必須です"),
 });
 
 export type FormType = {
@@ -28,7 +29,7 @@ export type FormType = {
   heat_health: string;
   heat_health_Radio?: string;
   heat_health_Text?: string;
-  // hete: string;
-  // hete_Radio: string;
-  // hete_Text: string;
+  hete: string;
+  hete_Radio?: string;
+  hete_Text?: string;
 };

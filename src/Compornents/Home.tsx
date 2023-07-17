@@ -26,11 +26,11 @@ import { useEffect } from "react";
 
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
-  // const checkItems: boolean[] = CheckItems.map((element) => element.checked);
   const {
     control,
     handleSubmit,
     register,
+    resetField,
     formState: { errors },
   } = useForm<FormType>({
     defaultValues: {
@@ -38,12 +38,12 @@ function Home() {
       employment: "",
       welfare_programme_Check: [],
       welfare_programme_Text: "",
-      heat_health: "experience",
+      heat_health: "",
       heat_health_Radio: "",
       heat_health_Text: "",
-      // hete: "",
-      // hete_Radio: "",
-      // hete_Text: "",
+      hete: "",
+      hete_Radio: "",
+      hete_Text: "",
     },
     mode: "onChange",
     resolver: yupResolver(schema),
@@ -59,8 +59,11 @@ function Home() {
     console.log(useWacthcheck);
   }, [useWacthcheck]);
 
+  // const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
+  //   sendText(data.Employment_Classification);
+
   const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
-    sendText(data.Employment_Classification);
+    console.log(data);
 
   return (
     <Stack
@@ -102,14 +105,15 @@ function Home() {
         </Typography>
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q3</span>
-          <div>
+          <span>
             会社の熱中症対策の取り組みとして、これは良かった・来年はこんなことをしてほしいなど
             教えてください。(最大2つ)
-          </div>
+          </span>
         </Typography>
         <FormControl error className={styles.boxs_choice}>
           {CheckItems.map((item) => (
             <FormControlLabel
+              key={item.id}
               label={item.name}
               value={item.id}
               id={item.id}
@@ -124,9 +128,9 @@ function Home() {
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q4</span>
-          <div>
+          <span>
             来年度にこんな取り組みをしてほしいというものがあれば、教えてください。
-          </div>
+          </span>
         </Typography>
         <TextField
           name="welfare_programme_Text"
@@ -137,13 +141,30 @@ function Home() {
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q5</span>
-          <div>工場内の暑さで、体調・気分が悪くなったことはありますか？</div>
+          <span>工場内の暑さで、体調・気分が悪くなったことはありますか？</span>
         </Typography>
         <HeatHelth
           control={control}
           name="heat_health"
           SecondRadio="heat_health_Radio"
           ThardText="heat_health_Text"
+          QuestionNumber={5}
+          restField={resetField}
+        />
+      </Box>
+      <Box className={styles.boxs}>
+        <Typography variant="body2" gutterBottom className={styles.inline}>
+          <span className={styles.question}>Q6</span>
+          <span>作業内容で痛い思いや、きつい思いをしたことがありますか。</span>
+        </Typography>
+        <HeatHelth
+          control={control}
+          name="hete"
+          SecondRadio="hete_Radio"
+          ThardText="hete_Text"
+          QuestionNumber={6}
+          // setValueRadio={setValue("hete_Radio", "")}
+          restField={resetField}
         />
       </Box>
       <Button variant="contained" type="submit">

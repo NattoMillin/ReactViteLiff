@@ -2,6 +2,7 @@ import {
   Controller,
   FieldValues,
   Path,
+  PathValue,
   UseControllerProps,
 } from "react-hook-form";
 import {
@@ -23,7 +24,10 @@ import HeartStyle from "./HeatHelth.module.css";
 type Names<T extends FieldValues> = {
   SecondRadio: Path<T>;
   ThardText: Path<T>;
+  QuestionNumber: number;
+  restField: (props: Path<T>) => void;
 };
+
 export type RhfTextFieldProps<T extends FieldValues> = UseControllerProps<T> &
   Names<T>;
 
@@ -32,18 +36,49 @@ export const HeatHelth = <T extends FieldValues>(
 ) => {
   const [HeatValue, setHeatValue] = useState("");
   const [HeatValueRadio, setHeatValueRadio] = useState("");
-  const [HeatValueText, setHeatValueText] = useState("");
-
   const [showContents, setShowContents] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const childElement = useRef<HTMLDivElement>(null);
+  const [showTextContents, setShowTextContents] = useState(false);
+  const [TextcontentHeight, setTextcontentHeight] = useState(0);
+  const TextchildElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (HeatValue == "never") {
+    if (HeatValue == "never" || HeatValue == "") {
       setHeatValueRadio("");
-      setHeatValueText("");
+      setShowContents(false);
+      setShowTextContents(false);
+      props.restField(props.SecondRadio);
+      props.restField(props.ThardText);
+      // props.setValue(props.SecondRadio, "");
+      // props.setValue(props.ThardText, "");
+    } else {
+      if (childElement.current) {
+        const childHeight = childElement.current?.clientHeight; // 対象要素の高さの取得
+        setContentHeight(childHeight); // 対象要素の高さの代入
+        setShowContents(true);
+      }
     }
   }, [HeatValue]);
+
+  useEffect(() => {
+    if (HeatValueRadio == "yes" || HeatValueRadio == "") {
+      setShowTextContents(false);
+    } else {
+      if (TextchildElement.current) {
+        const childHeightText = TextchildElement.current?.clientHeight; // 対象要素の高さの取得
+        setTextcontentHeight(childHeightText); // 対象要素の高さの代入
+        setShowTextContents(true);
+      }
+    }
+  }, [HeatValueRadio]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHeatValue((event.target as HTMLInputElement).value);
+  };
+  const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHeatValueRadio((event.target as HTMLInputElement).value);
+  };
 
   return (
     <Box className={HeartStyle.container}>
@@ -58,12 +93,16 @@ export const HeatHelth = <T extends FieldValues>(
                 error={fieldState.invalid}
                 sx={{ minWidth: 120 }}
               >
-                <MuiRadioGroup name={"heat_health"} value={HeatValue}>
+                <MuiRadioGroup
+                  name={props.name}
+                  value={HeatValue}
+                  onChange={handleChange}
+                >
                   {Radio_experience.map((item: RadioItemType) => (
                     <FormControlLabel
-                      {...rest}
                       key={item.label}
-                      onChange={() => setHeatValue(item.value)}
+                      {...rest}
+                      onChange={(e: any) => onChange(e)}
                       value={item.value}
                       control={<Radio />}
                       label={item.label}
@@ -76,72 +115,98 @@ export const HeatHelth = <T extends FieldValues>(
           </>
         )}
       />
-
-      <Controller
-        name={props.SecondRadio}
-        control={props.control}
-        render={({ field: { onChange, ...rest }, fieldState }) => (
-          <div ref={childElement} className={HeartStyle.container}>
-            <FormControl
-              fullWidth
-              error={fieldState.invalid}
-              sx={{ minWidth: 120 }}
-            >
-              <MuiRadioGroup name={"heat_health_Radio"} value={HeatValueRadio}>
-                {Radio_YesNo.map((item: RadioItemType) => (
-                  <FormControlLabel
-                    {...rest}
-                    key={item.label}
-                    onChange={() => setHeatValueRadio(item.value)}
-                    value={item.value}
-                    control={<Radio />}
-                    label={item.label}
-                  />
-                ))}
-              </MuiRadioGroup>
-              <FormHelperText>{fieldState.error?.message}</FormHelperText>
-            </FormControl>
-          </div>
-        )}
-      />
-      <Controller
-        name={props.ThardText}
-        control={props.control}
-        render={({ field: { onChange, ...rest }, fieldState }) => (
-          <div className={HeartStyle.container}>
-            <div
-              className={
-                HeatValueRadio === "No"
-                  ? `${HeartStyle.appear} `
-                  : `${HeartStyle.unappear}`
-              }
-            >
+      <div
+        style={{
+          height: showContents ? `${contentHeight}px` : "0px",
+          opacity: showContents ? 1 : 0,
+        }}
+        className={HeartStyle.innerContent}
+      >
+        <Controller
+          name={props.SecondRadio}
+          control={props.control}
+          render={({ field: { onChange, ...rest }, fieldState }) => (
+            <div ref={childElement} className={HeartStyle.container}>
               <Typography
                 variant="body2"
                 gutterBottom
-                className={styles.inline}
+                className={HeartStyle.inline}
               >
-                <span className={styles.question}>Q5-1</span>
-                <div>
+                <span
+                  className={styles.question}
+                >{`Q${props.QuestionNumber}-1`}</span>
+                <span>そのことを上司に報告しましたか？</span>
+              </Typography>
+              <FormControl
+                fullWidth
+                error={fieldState.invalid}
+                sx={{ minWidth: 120 }}
+              >
+                <MuiRadioGroup
+                  name={"heat_health_Radio"}
+                  value={HeatValueRadio}
+                  onChange={handleChangeRadio}
+                >
+                  {Radio_YesNo.map((item: RadioItemType) => (
+                    <FormControlLabel
+                      {...rest}
+                      key={item.label}
+                      onChange={(e: any) => onChange(e)}
+                      value={item.value}
+                      control={<Radio />}
+                      label={item.label}
+                    />
+                  ))}
+                </MuiRadioGroup>
+                <FormHelperText>{fieldState.error?.message}</FormHelperText>
+              </FormControl>
+            </div>
+          )}
+        />
+      </div>
+      <div
+        style={{
+          height: showTextContents ? `${TextcontentHeight}px` : "0px",
+          opacity: showTextContents ? 1 : 0,
+        }}
+        className={HeartStyle.innerContent}
+      >
+        <Controller
+          name={props.ThardText}
+          control={props.control}
+          render={({ field, fieldState }) => (
+            <div ref={TextchildElement} className={HeartStyle.container}>
+              <Typography
+                variant="body2"
+                gutterBottom
+                className={HeartStyle.inline}
+              >
+                <span
+                  className={styles.question}
+                >{`Q${props.QuestionNumber}-2`}</span>
+                <span>
                   いいえと答えた方、報告しずらかった理由をお聞かせください。
-                </div>
+                </span>
               </Typography>
               <MuiTextField
-                {...rest}
+                {...field}
                 type="text"
-                value={HeatValueText}
-                label={"welfare_programme_Text"}
+                value={field.value}
+                label={"理由をお聞かせください。"}
                 sx={{ width: "100%" }}
                 error={fieldState.invalid}
-                onChange={(event: any) => setHeatValueText(event.target.value)}
+                // onChange={(event: any) => setHeatValueText(event.target.value)}
+                onChange={(event: any) => {
+                  field.onChange(event.target.value);
+                }}
                 multiline
                 rows={3}
                 helperText={fieldState.error?.message}
               />
             </div>
-          </div>
-        )}
-      />
+          )}
+        />
+      </div>
     </Box>
   );
 };

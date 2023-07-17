@@ -1,8 +1,7 @@
 .container {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 .Mains {
   width: 100%;
@@ -18,4 +17,15 @@
   transform: translateY(-150%);
   transition: transform 0.5s ease-in-out;
   position: relative;
+}
+.innerContent {
+  transition: height 0.2s linear, opacity 0.2s ease-in;
+  overflow: hidden;
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
 }
