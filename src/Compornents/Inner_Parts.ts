@@ -4,26 +4,26 @@ import { SelectItemType } from "./Parts/Select";
 
 export const Employment_item: SelectItemType[] = [
   {
-    value: "大分工場",
-    label: "Ooita",
+    label: "大分工場",
+    value: "Ooita",
   },
   {
-    value: "福岡工場",
-    label: "Fukuoka",
+    label: "福岡工場",
+    value: "Fukuoka",
   },
 ];
 export const Employment_Classification_item: SelectItemType[] = [
   {
-    value: "正社員",
-    label: "regular",
+    label:"正社員",
+    value: "regular",
   },
   {
-    value: "派遣社員・期間社員",
-    label: "temporary",
+    label: "派遣社員・期間社員",
+    value: "temporary",
   },
   {
-    value: "出向者",
-    label: "Outward",
+     label:"出向者",
+     value:"Outward",
   },
 ];
 
@@ -87,5 +87,15 @@ export const Radio_YesNo: RadioItemType[] = [
   {
     value: "No",
     label: "いいえ",
+  },
+];
+export const RelationItem: RadioItemType[] = [
+  {
+    value: "Good",
+    label: "良好",
+  },
+  {
+    value: "NoGood",
+    label: "険悪",
   },
 ];

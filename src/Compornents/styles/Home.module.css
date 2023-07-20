@@ -3,7 +3,7 @@
 .boxs {
   font-family: "Oswald", sans-serif;
   width: 100%;
-  padding: 15px;
+  padding: 15px 0;
 }
 .question {
   font-family: "Oswald", sans-serif;
@@ -28,4 +28,17 @@
 }
 .inline span {
   height: 100%;
+}
+.ContainName {
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgb(45, 103, 211);
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
+.MainName {
+  font-weight: 600 !important;
+}
+.subtitle {
+  font-size: small;
 }

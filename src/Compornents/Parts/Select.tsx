@@ -29,7 +29,12 @@ export const Select = <T extends FieldValues>(props: RhfTextFieldProps<T>) => {
       control={control}
       render={({ field: { onChange, ...rest }, fieldState }) => (
         <>
-          <FormControl fullWidth error={fieldState.invalid} sx={styles}>
+          <FormControl
+            fullWidth
+            error={fieldState.invalid}
+            sx={styles}
+            margin="dense"
+          >
             <InputLabel id="area-label">{label}</InputLabel>
             <MuiSelect
               label={label}
@@ -37,8 +42,8 @@ export const Select = <T extends FieldValues>(props: RhfTextFieldProps<T>) => {
               {...rest}
             >
               {items.map((item) => (
-                <MenuItem key={item.label} value={item.label}>
-                  {item.value}
+                <MenuItem key={item.label} value={item.value}>
+                  {item.label}
                 </MenuItem>
               ))}
             </MuiSelect>

@@ -16,13 +16,15 @@ import {
   CheckItems,
   Employment_Classification_item,
   Employment_item,
+  RelationItem,
 } from "./Inner_Parts";
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
-import { sendText } from "../sendMessage/SendMassage";
+import { TextFomattar, sendText } from "../sendMessage/SendMassage";
 import styles from "./styles/Home.module.css";
 import { HeatHelth } from "./Compornent/HeatHelth";
 import { useEffect } from "react";
+import { QuestionAccodion } from "./Compornent/QuestionAccodion";
 
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
 function Home() {
@@ -44,26 +46,32 @@ function Home() {
       hete: "",
       hete_Radio: "",
       hete_Text: "",
+      HumanRelations: "",
+      HumanRelations_Text: "",
+      ImprovementRelations: "",
+      Problem: "",
+      TalkYourBoss: "",
+      Harassment: "",
+      LeavingOffice: "",
+      RequestsSupervisors: "",
+      ImprovementRelations_Text: "",
+      Problem_Text: "",
+      TalkYourBoss_Text: "",
+      Harassment_Text: "",
+      LeavingOffice_Text: "",
+      RequestsSupervisors_Text: "",
+      FamilyFest: "",
+      Freebie: "",
     },
     mode: "onChange",
     resolver: yupResolver(schema),
   });
 
-  const useWacthcheck = useWatch({
-    control,
-    name: "welfare_programme_Check", // without supply name will watch the entire form, or ['firstName', 'lastName'] to watch both
-    defaultValue: [], // default value before the render
-  });
-
-  useEffect(() => {
-    console.log(useWacthcheck);
-  }, [useWacthcheck]);
-
   // const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
   //   sendText(data.Employment_Classification);
 
   const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
-    console.log(data);
+    console.log(TextFomattar(data));
 
   return (
     <Stack
@@ -73,10 +81,17 @@ function Home() {
       spacing={2}
       sx={{ m: 2, width: "500px" }}
     >
+      {/* 題名 */}
+      <Typography variant="h4" gutterBottom className={styles.MainName}>
+        2023年 第1回 従業員アンケート{" "}
+        <span className={styles.subtitle}>
+          (対象者：全従業員 出向者・派遣含む)
+        </span>
+      </Typography>
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q1</span>
-          今年度の取り組みでよかったものを選択してください。テスト(最大2つ)
+          勤務先を選択してください
         </Typography>
         <Select
           name="employment"
@@ -89,7 +104,7 @@ function Home() {
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q2</span>
-          今年度の取り組みでよかったものを選択してください。(最大2つ)
+          勤務区分を選択してください。
         </Typography>
         <Select
           name="Employment_Classification"
@@ -138,37 +153,215 @@ function Home() {
           styles={{ width: "100%" }}
         />
       </Box>
+      <HeatHelth
+        FirstQuestion="工場内の暑さのせいで、体調・気分が悪くなったことはありますか？"
+        control={control}
+        name="heat_health"
+        SecondRadio="heat_health_Radio"
+        ThardText="heat_health_Text"
+        QuestionNumber={5}
+        restField={resetField}
+      />
+
+      <HeatHelth
+        FirstQuestion="作業内容で痛い思いやきつい思いをしたことはありますか？"
+        control={control}
+        name="hete"
+        SecondRadio="hete_Radio"
+        ThardText="hete_Text"
+        QuestionNumber={6}
+        restField={resetField}
+      />
+
+      {/* 人間関係について */}
+      <Typography variant="h5" gutterBottom className={styles.ContainName}>
+        人間関係について
+      </Typography>
+      <QuestionAccodion
+        FirstQuestion="職場内の人間関係はどうですか？(反対直含む)"
+        Items={[
+          {
+            value: "Good",
+            label: "良好",
+          },
+          {
+            value: "NoGood",
+            label: "険悪",
+          },
+        ]}
+        Labels="険悪となった理由をおきかせください。"
+        control={control}
+        name="HumanRelations"
+        SecondRadio="HumanRelations_Text"
+        QuestionNumber={7}
+        restField={resetField}
+      />
+
+      <QuestionAccodion
+        FirstQuestion="職場内の人間関係で改善してほしいことはありますか？"
+        Items={[
+          {
+            value: "No",
+            label: "ない",
+          },
+          {
+            value: "Yes",
+            label: "ある",
+          },
+        ]}
+        control={control}
+        Labels="改善してほしい内容をお聞かせください。"
+        name="ImprovementRelations"
+        SecondRadio="ImprovementRelations_Text"
+        QuestionNumber={8}
+        restField={resetField}
+      />
+      <QuestionAccodion
+        FirstQuestion="仕事上の困り事ができた場合、上司に相談できますか？"
+        Items={[
+          {
+            value: "Yes",
+            label: "できる",
+          },
+          {
+            value: "No",
+            label: "できない",
+          },
+        ]}
+        control={control}
+        Labels="報告できなかった理由をお聞かせください。"
+        name="Problem"
+        SecondRadio="Problem_Text"
+        QuestionNumber={9}
+        restField={resetField}
+      />
+      <QuestionAccodion
+        FirstQuestion="1日に1回以上、上司と話をしていますか？(プライベートな会話もOK)"
+        Labels="話せない訳がありますか？。"
+        Items={[
+          {
+            value: "Yes",
+            label: "している",
+          },
+          {
+            value: "No",
+            label: "していない",
+          },
+        ]}
+        control={control}
+        name="TalkYourBoss"
+        SecondRadio="TalkYourBoss_Text"
+        QuestionNumber={10}
+        restField={resetField}
+      />
+      <QuestionAccodion
+        FirstQuestion="職場内においてハラスメントを感じる時がありますか？"
+        Labels="ハラスメント名と内容をお書きください。"
+        Items={[
+          {
+            value: "No",
+            label: "ない",
+          },
+          {
+            value: "Yes",
+            label: "ある",
+          },
+        ]}
+        control={control}
+        name="Harassment"
+        SecondRadio="Harassment_Text"
+        QuestionNumber={11}
+        restField={resetField}
+      />
+      <QuestionAccodion
+        FirstQuestion="退社したいと思ったことがありますか？"
+        Labels="理由をお聞かせください。"
+        Items={[
+          {
+            value: "No",
+            label: "ない",
+          },
+          {
+            value: "Yes",
+            label: "ある",
+          },
+        ]}
+        control={control}
+        name="LeavingOffice"
+        SecondRadio="LeavingOffice_Text"
+        QuestionNumber={12}
+        restField={resetField}
+      />
+      <QuestionAccodion
+        FirstQuestion="会社や上司に対して、何か要望はありますか？"
+        Labels="要望をお聞かせください。"
+        Items={[
+          {
+            value: "No",
+            label: "ない",
+          },
+          {
+            value: "Yes",
+            label: "ある",
+          },
+        ]}
+        control={control}
+        name="RequestsSupervisors"
+        SecondRadio="RequestsSupervisors_Text"
+        QuestionNumber={13}
+        restField={resetField}
+      />
+
+      {/* 人間関係について */}
+      <Typography variant="h5" gutterBottom className={styles.ContainName}>
+        ファミリーフェスタについて
+      </Typography>
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
-          <span className={styles.question}>Q5</span>
-          <span>工場内の暑さで、体調・気分が悪くなったことはありますか？</span>
+          <span className={styles.question}>Q14</span>
+          <span>
+            今年もファミリーフェスタを開催いたします！
+            <br />
+            そこで、参加予定についてお伺いします。
+          </span>
         </Typography>
-        <HeatHelth
+        <Select
+          name="FamilyFest"
           control={control}
-          name="heat_health"
-          SecondRadio="heat_health_Radio"
-          ThardText="heat_health_Text"
-          QuestionNumber={5}
-          restField={resetField}
+          label="ファミリーフェスタの参加について"
+          styles={{ minWidth: 120 }}
+          items={[
+            {
+              value: "Yes",
+              label: "参加予定",
+            },
+            {
+              value: "NoIdea",
+              label: "未定",
+            },
+            {
+              value: "No",
+              label: "不参加",
+            },
+          ]}
         />
       </Box>
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
-          <span className={styles.question}>Q6</span>
-          <span>作業内容で痛い思いや、きつい思いをしたことがありますか。</span>
+          <span className={styles.question}>Q15</span>
+          <span>ファミリーフェスタの景品で希望景品はありますか？</span>
         </Typography>
-        <HeatHelth
+        <TextField
+          name="Freebie"
           control={control}
-          name="hete"
-          SecondRadio="hete_Radio"
-          ThardText="hete_Text"
-          QuestionNumber={6}
-          // setValueRadio={setValue("hete_Radio", "")}
-          restField={resetField}
+          styles={{ width: "100%" }}
         />
       </Box>
+      <Typography variant="body1" gutterBottom>
+        お疲れ様でした！ 送信ボタンを押してください。
+      </Typography>
       <Button variant="contained" type="submit">
-        Submit
+        送信
       </Button>
     </Stack>
   );

@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.innerContent {
+  transition: height 0.2s linear, opacity 0.2s ease-in;
+  overflow: hidden;
+}

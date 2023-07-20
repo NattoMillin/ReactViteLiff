@@ -2,7 +2,6 @@ import {
   Controller,
   FieldValues,
   Path,
-  PathValue,
   UseControllerProps,
 } from "react-hook-form";
 import {
@@ -22,6 +21,7 @@ import styles from "../styles/Home.module.css";
 import HeartStyle from "./HeatHelth.module.css";
 
 type Names<T extends FieldValues> = {
+  FirstQuestion: string;
   SecondRadio: Path<T>;
   ThardText: Path<T>;
   QuestionNumber: number;
@@ -81,7 +81,11 @@ export const HeatHelth = <T extends FieldValues>(
   };
 
   return (
-    <Box className={HeartStyle.container}>
+    <Box className={styles.boxs}>
+      <Typography variant="body2" gutterBottom className={styles.inline}>
+        <span className={styles.question}>{`Q${props.QuestionNumber}`}</span>
+        <span>{props.FirstQuestion}</span>
+      </Typography>
       <Controller
         name={props.name}
         control={props.control}
@@ -193,9 +197,9 @@ export const HeatHelth = <T extends FieldValues>(
                 type="text"
                 value={field.value}
                 label={"理由をお聞かせください。"}
-                sx={{ width: "100%" }}
+                fullWidth
+                margin="dense"
                 error={fieldState.invalid}
-                // onChange={(event: any) => setHeatValueText(event.target.value)}
                 onChange={(event: any) => {
                   field.onChange(event.target.value);
                 }}
