@@ -77,7 +77,7 @@ function Home() {
       noValidate
       onSubmit={handleSubmit(onSubmit)}
       spacing={2}
-      sx={{ m: 2, width: "500px" }}
+      sx={{ m: 2, width: "100%" }}
     >
       {/* 題名 */}
       <Typography variant="h4" gutterBottom className={styles.MainName}>
