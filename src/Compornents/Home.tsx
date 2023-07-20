@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm, useWatch } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, schema } from "./Validate/Validate";
 import {
@@ -16,14 +16,12 @@ import {
   CheckItems,
   Employment_Classification_item,
   Employment_item,
-  RelationItem,
 } from "./Inner_Parts";
 import { TextField } from "./Parts/TextField";
 import { Select } from "./Parts/Select";
 import { TextFomattar, sendText } from "../sendMessage/SendMassage";
 import styles from "./styles/Home.module.css";
 import { HeatHelth } from "./Compornent/HeatHelth";
-import { useEffect } from "react";
 import { QuestionAccodion } from "./Compornent/QuestionAccodion";
 
 // import { CheckBoxGroup } from "./Parts/CheckboxGroup";
@@ -67,11 +65,11 @@ function Home() {
     resolver: yupResolver(schema),
   });
 
-  // const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
-  //   sendText(data.Employment_Classification);
-
   const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
-    console.log(TextFomattar(data));
+    sendText(TextFomattar(data));
+
+  // const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
+  //   console.log(TextFomattar(data));
 
   return (
     <Stack
