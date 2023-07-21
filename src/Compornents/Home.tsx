@@ -120,8 +120,7 @@ function Home() {
         <Typography variant="body2" gutterBottom className={styles.inline}>
           <span className={styles.question}>Q3</span>
           <span>
-            会社の熱中症対策の取り組みとして、これは良かった・来年はこんなことをしてほしいなど
-            教えてください。(最大2つ)
+            会社の熱中症対策の取り組みとして、良かったことを教えてください。(最大2つ)
           </span>
         </Typography>
         <FormControl error className={styles.boxs_choice}>
@@ -142,7 +141,7 @@ function Home() {
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
           来年度の福利厚生の一環として、シャワールームの設置希望がありました。
-          そこで、希望するかご意見をいただけますでしょうか。
+          そこで、設置を希望するかご意見をいただけますでしょうか。
         </Typography>
         <Select
           name="employment"
