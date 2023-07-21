@@ -147,7 +147,7 @@ function Home() {
         <Select
           name="employment"
           control={control}
-          label="希望する"
+          label="シャワールームについて"
           styles={{ minWidth: 120 }}
           items={[
             {
