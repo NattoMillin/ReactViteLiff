@@ -2,6 +2,7 @@ import liff from "@line/liff";
 import { FormType } from "../Compornents/Validate/Validate";
 
 export function sendText(text: string) {
+  console.log(text);
   liff
     .sendMessages([
       {

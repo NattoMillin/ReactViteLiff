@@ -66,8 +66,10 @@ function Home() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
+  const onSubmit: SubmitHandler<FormType> = (data: FormType) => {
+    console.log(data);
     sendText(TextFomattar(data));
+  };
 
   // const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
   //   console.log(TextFomattar(data));
@@ -144,7 +146,7 @@ function Home() {
           そこで、設置を希望するかご意見をいただけますでしょうか。
         </Typography>
         <Select
-          name="employment"
+          name="showerroom"
           control={control}
           label="シャワールームについて"
           styles={{ minWidth: 120 }}
