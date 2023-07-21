@@ -29,6 +29,7 @@ export function TextFomattar(data: FormType) {
       return "";
     })
   }
+シャワールーム:${data.showerroom}
 続けてほしい取り組み:${data.welfare_programme_Text}
 暑さのせいでの体調不良:${data.heat_health}
 上司への報告:${data.heat_health_Radio}

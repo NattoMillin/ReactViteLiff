@@ -37,6 +37,7 @@ function Home() {
       Employment_Classification: "",
       employment: "",
       welfare_programme_Check: [],
+      showerroom: "",
       welfare_programme_Text: "",
       heat_health: "",
       heat_health_Radio: "",
@@ -137,6 +138,28 @@ function Home() {
             {errors?.welfare_programme_Check?.message}
           </FormHelperText>
         </FormControl>
+      </Box>
+      <Box className={styles.boxs}>
+        <Typography variant="body2" gutterBottom className={styles.inline}>
+          来年度の福利厚生の一環として、シャワールームの設置希望がありました。
+          そこで、希望するかご意見をいただけますでしょうか。
+        </Typography>
+        <Select
+          name="employment"
+          control={control}
+          label="希望する"
+          styles={{ minWidth: 120 }}
+          items={[
+            {
+              value: "Yes",
+              label: "希望する",
+            },
+            {
+              value: "No",
+              label: "希望しない",
+            },
+          ]}
+        />
       </Box>
       <Box className={styles.boxs}>
         <Typography variant="body2" gutterBottom className={styles.inline}>
