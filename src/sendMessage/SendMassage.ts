@@ -47,7 +47,7 @@ export function TextFomattar(data: FormType) {
 理由:${data.TalkYourBoss_Text}
 ハラスメントについて:${data.Harassment}
 理由:${data.Harassment_Text}
-退社意向:${data.LeavingOffice}
+退職意向:${data.LeavingOffice}
 理由:${data.LeavingOffice_Text}
 要望:${data.RequestsSupervisors}
 内容:${data.RequestsSupervisors_Text}

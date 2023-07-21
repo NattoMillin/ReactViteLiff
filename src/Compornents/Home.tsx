@@ -294,7 +294,7 @@ function Home() {
         restField={resetField}
       />
       <QuestionAccodion
-        FirstQuestion="退社したいと思ったことがありますか？"
+        FirstQuestion="退職したいと思ったことがありますか？"
         Labels="理由をお聞かせください。"
         Items={[
           {
