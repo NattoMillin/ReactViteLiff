@@ -44,7 +44,7 @@ export const HeatHelth = <T extends FieldValues>(
   const TextchildElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (HeatValue == "never" || HeatValue == "") {
+    if (HeatValue == "ない" || HeatValue == "") {
       setHeatValueRadio("");
       setShowContents(false);
       setShowTextContents(false);
@@ -62,7 +62,7 @@ export const HeatHelth = <T extends FieldValues>(
   }, [HeatValue]);
 
   useEffect(() => {
-    if (HeatValueRadio == "yes" || HeatValueRadio == "") {
+    if (HeatValueRadio == "はい" || HeatValueRadio == "") {
       setShowTextContents(false);
     } else {
       if (TextchildElement.current) {
