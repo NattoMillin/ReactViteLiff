@@ -215,6 +215,7 @@ function Home() {
             label: "険悪",
           },
         ]}
+        faildWord={["険悪"]}
         Labels="険悪となった理由をおきかせください。"
         control={control}
         name="HumanRelations"
@@ -240,6 +241,7 @@ function Home() {
         name="ImprovementRelations"
         SecondRadio="ImprovementRelations_Text"
         QuestionNumber={8}
+        faildWord={["ある"]}
         restField={resetField}
       />
       <QuestionAccodion
@@ -254,6 +256,7 @@ function Home() {
             label: "できない",
           },
         ]}
+        faildWord={["できない"]}
         control={control}
         Labels="報告できなかった理由をお聞かせください。"
         name="Problem"
@@ -274,6 +277,7 @@ function Home() {
             label: "していない",
           },
         ]}
+        faildWord={["していない"]}
         control={control}
         name="TalkYourBoss"
         SecondRadio="TalkYourBoss_Text"
@@ -297,6 +301,7 @@ function Home() {
             label: "ある(経験した)",
           },
         ]}
+        faildWord={["あると思う", "ある(経験した)"]}
         control={control}
         name="Harassment"
         SecondRadio="Harassment_Text"
@@ -316,6 +321,7 @@ function Home() {
             label: "ある",
           },
         ]}
+        faildWord={["ある"]}
         control={control}
         name="LeavingOffice"
         SecondRadio="LeavingOffice_Text"
@@ -335,6 +341,7 @@ function Home() {
             label: "ある",
           },
         ]}
+        faildWord={["ある"]}
         control={control}
         name="RequestsSupervisors"
         SecondRadio="RequestsSupervisors_Text"

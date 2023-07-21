@@ -27,6 +27,7 @@ type Names<T extends FieldValues> = {
   SecondRadio: Path<T>;
   QuestionNumber: number;
   restField: (props: Path<T>) => void;
+  faildWord: string[];
 };
 
 type RhfTextFieldProps<T extends FieldValues> = UseControllerProps<T> &
@@ -42,7 +43,7 @@ export const QuestionAccodion = <T extends FieldValues>(
   const childElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (FirstQuestion == props.Items[1].value) {
+    if (props.faildWord.includes(FirstQuestion)) {
       // setSecondQuestion("");
       if (childElement.current) {
         const childHeight = childElement.current?.clientHeight;
