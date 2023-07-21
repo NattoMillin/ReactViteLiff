@@ -5,97 +5,67 @@ import { SelectItemType } from "./Parts/Select";
 export const Employment_item: SelectItemType[] = [
   {
     label: "大分工場",
-    value: "Ooita",
+    value: "大分",
   },
   {
     label: "福岡工場",
-    value: "Fukuoka",
+    value: "福岡",
   },
 ];
 export const Employment_Classification_item: SelectItemType[] = [
   {
-    label:"正社員",
-    value: "regular",
+    label: "正社員",
+    value: "正社員",
   },
   {
     label: "派遣社員・期間社員",
-    value: "temporary",
+    value: "派遣社員",
   },
   {
-     label:"出向者",
-     value:"Outward",
+    label: "出向者",
+    value: "出向者",
   },
 ];
 
 export const CheckItems: CheckBoxItemType[] = [
-  { id: "Kuutyou", name: "冷風服をあっせん価格にて販売", checked: false },
-  { id: "Reisui", name: "休憩所に冷水機", checked: false },
-  { id: "Ice", name: "アイスの無料配布", checked: false },
-  { id: "Drink", name: "スポーツドリンク50円", checked: false },
-];
-
-export const employment_item = [
-  {
-    value: "Ooita",
-    label: "大分工場",
-  },
-  {
-    value: "Fukuoka",
-    label: "福岡工場",
-  },
-  {
-    value: "Default",
-    label: "",
-  },
-];
-
-export const welfare_programme_Check_Item = [
-  {
-    label: "Air_conditioning",
-    value: "空調服の斡旋価格にて販売・支給",
-  },
-  {
-    label: "Water_Cooler",
-    value: "冷水器の設置",
-  },
-  {
-    label: "ice_cream",
-    value: "アイスの無料提供",
-  },
-  {
-    label: "Drink",
-    value: "スポーツドリンク50円",
-  },
+  { id: "空調服", name: "冷風服をあっせん価格にて販売", checked: false },
+  { id: "冷水器", name: "休憩所に冷水機", checked: false },
+  { id: "アイスクリーム", name: "アイスの無料配布", checked: false },
+  { id: "ドリンク", name: "スポーツドリンク50円", checked: false },
 ];
 
 export const Radio_experience: RadioItemType[] = [
   {
-    value: "never",
+    value: "ない",
     label: "ない",
   },
   {
-    value: "experience",
+    value: "ある",
     label: "ある",
   },
 ];
 
 export const Radio_YesNo: RadioItemType[] = [
   {
-    value: "yes",
+    value: "はい",
     label: "はい",
   },
   {
-    value: "No",
+    value: "いいえ",
     label: "いいえ",
   },
 ];
 export const RelationItem: RadioItemType[] = [
   {
-    value: "Good",
+    value: "良好",
     label: "良好",
   },
   {
-    value: "NoGood",
+    value: "普通",
+    label: "普通",
+  },
+  {
+    value: "険悪",
     label: "険悪",
   },
 ];

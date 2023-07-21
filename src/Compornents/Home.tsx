@@ -152,11 +152,11 @@ function Home() {
           styles={{ minWidth: 120 }}
           items={[
             {
-              value: "Yes",
+              value: "希望する",
               label: "希望する",
             },
             {
-              value: "No",
+              value: "希望しない",
               label: "希望しない",
             },
           ]}
@@ -203,11 +203,15 @@ function Home() {
         FirstQuestion="職場内の人間関係はどうですか？(反対直含む)"
         Items={[
           {
-            value: "Good",
+            value: "良好",
             label: "良好",
           },
           {
-            value: "NoGood",
+            value: "普通",
+            label: "普通",
+          },
+          {
+            value: "険悪",
             label: "険悪",
           },
         ]}
@@ -223,11 +227,11 @@ function Home() {
         FirstQuestion="職場内の人間関係で改善してほしいことはありますか？"
         Items={[
           {
-            value: "No",
+            value: "ない",
             label: "ない",
           },
           {
-            value: "Yes",
+            value: "ある",
             label: "ある",
           },
         ]}
@@ -242,11 +246,11 @@ function Home() {
         FirstQuestion="仕事上の困り事ができた場合、上司に相談できますか？"
         Items={[
           {
-            value: "Yes",
+            value: "できる",
             label: "できる",
           },
           {
-            value: "No",
+            value: "できない",
             label: "できない",
           },
         ]}
@@ -262,11 +266,11 @@ function Home() {
         Labels="話せない訳がありますか？。"
         Items={[
           {
-            value: "Yes",
+            value: "している",
             label: "している",
           },
           {
-            value: "No",
+            value: "していない",
             label: "していない",
           },
         ]}
@@ -278,15 +282,19 @@ function Home() {
       />
       <QuestionAccodion
         FirstQuestion="職場内においてハラスメントを感じる時がありますか？"
-        Labels="ハラスメント名と内容をお書きください。"
+        Labels="内容をお聞かせください"
         Items={[
           {
-            value: "No",
+            value: "ない",
             label: "ない",
           },
           {
-            value: "Yes",
-            label: "ある",
+            value: "あると思う",
+            label: "あると思う",
+          },
+          {
+            value: "ある(経験した)",
+            label: "ある(経験した)",
           },
         ]}
         control={control}
@@ -300,11 +308,11 @@ function Home() {
         Labels="理由をお聞かせください。"
         Items={[
           {
-            value: "No",
+            value: "ない",
             label: "ない",
           },
           {
-            value: "Yes",
+            value: "ある",
             label: "ある",
           },
         ]}
@@ -319,11 +327,11 @@ function Home() {
         Labels="要望をお聞かせください。"
         Items={[
           {
-            value: "No",
+            value: "ない",
             label: "ない",
           },
           {
-            value: "Yes",
+            value: "ある",
             label: "ある",
           },
         ]}
@@ -354,15 +362,15 @@ function Home() {
           styles={{ minWidth: 120 }}
           items={[
             {
-              value: "Yes",
+              value: "参加予定",
               label: "参加予定",
             },
             {
-              value: "NoIdea",
+              value: "未定",
               label: "未定",
             },
             {
-              value: "No",
+              value: "不参加",
               label: "不参加",
             },
           ]}
