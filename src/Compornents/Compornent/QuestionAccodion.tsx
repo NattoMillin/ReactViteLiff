@@ -42,16 +42,16 @@ export const QuestionAccodion = <T extends FieldValues>(
   const childElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (FirstQuestion == props.Items[0].value || FirstQuestion == "") {
+    if (FirstQuestion == props.Items[1].value) {
       // setSecondQuestion("");
-      setShowContents(false);
-      props.restField(props.SecondRadio);
-    } else {
       if (childElement.current) {
         const childHeight = childElement.current?.clientHeight;
         setContentHeight(childHeight);
         setShowContents(true);
       }
+    } else {
+      setShowContents(false);
+      props.restField(props.SecondRadio);
     }
   }, [FirstQuestion]);
 
