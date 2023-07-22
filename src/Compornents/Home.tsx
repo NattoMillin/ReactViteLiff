@@ -10,7 +10,6 @@ import {
   FormHelperText,
   Stack,
   Typography,
-  //  TextField
 } from "@mui/material";
 import {
   CheckItems,
@@ -30,6 +29,7 @@ function Home() {
     control,
     handleSubmit,
     register,
+    resetField,
     formState: { errors },
   } = useForm<FormType>({
     defaultValues: {
@@ -65,13 +65,13 @@ function Home() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormType> = (data: FormType) => {
-    console.log(data);
-    sendText(TextFomattar(data));
-  };
+  // const onSubmit: SubmitHandler<FormType> = (data: FormType) => {
+  //   console.log(data);
+  //   sendText(TextFomattar(data));
+  // };
 
-  // const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
-  //   console.log(TextFomattar(data));
+  const onSubmit: SubmitHandler<FormType> = (data: FormType) =>
+    console.log(TextFomattar(data));
 
   return (
     <Stack
