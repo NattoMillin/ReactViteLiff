@@ -26,7 +26,6 @@ type Names<T extends FieldValues> = {
   Items: RadioItemType[];
   SecondRadio: Path<T>;
   QuestionNumber: number;
-  restField: (props: Path<T>) => void;
   faildWord: string[];
 };
 
@@ -44,7 +43,6 @@ export const QuestionAccodion = <T extends FieldValues>(
 
   useEffect(() => {
     if (props.faildWord.includes(FirstQuestion)) {
-      // setSecondQuestion("");
       if (childElement.current) {
         const childHeight = childElement.current?.clientHeight;
         setContentHeight(childHeight);
@@ -52,7 +50,6 @@ export const QuestionAccodion = <T extends FieldValues>(
       }
     } else {
       setShowContents(false);
-      props.restField(props.SecondRadio);
     }
   }, [FirstQuestion]);
 

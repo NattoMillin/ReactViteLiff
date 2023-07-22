@@ -30,7 +30,6 @@ function Home() {
     control,
     handleSubmit,
     register,
-    resetField,
     formState: { errors },
   } = useForm<FormType>({
     defaultValues: {
@@ -182,7 +181,6 @@ function Home() {
         SecondRadio="heat_health_Radio"
         ThardText="heat_health_Text"
         QuestionNumber={5}
-        restField={resetField}
       />
 
       <HeatHelth
@@ -192,7 +190,6 @@ function Home() {
         SecondRadio="hete_Radio"
         ThardText="hete_Text"
         QuestionNumber={6}
-        restField={resetField}
       />
 
       {/* 人間関係について */}
@@ -221,7 +218,6 @@ function Home() {
         name="HumanRelations"
         SecondRadio="HumanRelations_Text"
         QuestionNumber={7}
-        restField={resetField}
       />
 
       <QuestionAccodion
@@ -242,7 +238,6 @@ function Home() {
         SecondRadio="ImprovementRelations_Text"
         QuestionNumber={8}
         faildWord={["ある"]}
-        restField={resetField}
       />
       <QuestionAccodion
         FirstQuestion="仕事上の困り事ができた場合、上司に相談できますか？"
@@ -262,7 +257,6 @@ function Home() {
         name="Problem"
         SecondRadio="Problem_Text"
         QuestionNumber={9}
-        restField={resetField}
       />
       <QuestionAccodion
         FirstQuestion="1日に1回以上、上司と話をしていますか？(プライベートな会話もOK)"
@@ -282,7 +276,6 @@ function Home() {
         name="TalkYourBoss"
         SecondRadio="TalkYourBoss_Text"
         QuestionNumber={10}
-        restField={resetField}
       />
       <QuestionAccodion
         FirstQuestion="職場内においてハラスメントを感じる時がありますか？"
@@ -306,7 +299,6 @@ function Home() {
         name="Harassment"
         SecondRadio="Harassment_Text"
         QuestionNumber={11}
-        restField={resetField}
       />
       <QuestionAccodion
         FirstQuestion="退職したいと思ったことがありますか？"
@@ -326,7 +318,6 @@ function Home() {
         name="LeavingOffice"
         SecondRadio="LeavingOffice_Text"
         QuestionNumber={12}
-        restField={resetField}
       />
       <QuestionAccodion
         FirstQuestion="会社や上司に対して、何か要望はありますか？"
@@ -346,7 +337,6 @@ function Home() {
         name="RequestsSupervisors"
         SecondRadio="RequestsSupervisors_Text"
         QuestionNumber={13}
-        restField={resetField}
       />
 
       {/* 人間関係について */}

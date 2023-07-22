@@ -33,25 +33,37 @@ export function TextFomattar(data: FormType) {
 シャワールーム:${data.showerroom}
 続けてほしい取り組み:${data.welfare_programme_Text}
 暑さのせいでの体調不良:${data.heat_health}
-上司への報告:${data.heat_health_Radio}
-報告できなかった理由:${data.heat_health_Text}
+上司への報告:${data.heat_health == "ある" ? data.heat_health_Radio : ""}
+報告できなかった理由:${
+    data.heat_health_Radio == "いいえ" && data.heat_health == "ある"
+      ? data.heat_health_Text
+      : ""
+  }
 痛い思い:${data.hete}
-上司への報告:${data.hete_Radio}
-報告できなかった理由:${data.hete_Text}
+上司への報告:${data.hete == "ある" ? data.hete_Radio : ""}
+報告できなかった理由:${
+    data.hete_Radio == "いいえ" && data.hete == "ある" ? data.hete_Text : ""
+  }
 人間関係について:${data.HumanRelations}
-理由:${data.HumanRelations_Text}
+理由:${data.HumanRelations == "険悪" ? data.HumanRelations_Text : ""}
 改善してほしい事:${data.ImprovementRelations}
-理由:${data.ImprovementRelations_Text}
+理由:${
+    data.ImprovementRelations == "ある" ? data.ImprovementRelations_Text : ""
+  }
 困り事ができた際:${data.Problem}
-理由:${data.Problem_Text}
+理由:${data.Problem == "できない" ? data.Problem_Text : ""}
 上司と会話:${data.TalkYourBoss}
-理由:${data.TalkYourBoss_Text}
+理由:${data.TalkYourBoss == "していない" ? data.TalkYourBoss_Text : ""}
 ハラスメントについて:${data.Harassment}
-理由:${data.Harassment_Text}
+理由:${
+    data.Harassment == "あると思う" || data.Harassment == "ある(経験した)"
+      ? data.Harassment_Text
+      : ""
+  }
 退職意向:${data.LeavingOffice}
-理由:${data.LeavingOffice_Text}
+理由:${data.TalkYourBoss == "ある" ? data.LeavingOffice_Text : ""}
 要望:${data.RequestsSupervisors}
-内容:${data.RequestsSupervisors_Text}
+理由:${data.RequestsSupervisors == "ある" ? data.RequestsSupervisors_Text : ""}
 ファミリーフェスタの参加有無:${data.FamilyFest}
 景品について:${data.Freebie}`;
 

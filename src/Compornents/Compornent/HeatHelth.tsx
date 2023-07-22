@@ -25,7 +25,6 @@ type Names<T extends FieldValues> = {
   SecondRadio: Path<T>;
   ThardText: Path<T>;
   QuestionNumber: number;
-  restField: (props: Path<T>) => void;
 };
 
 export type RhfTextFieldProps<T extends FieldValues> = UseControllerProps<T> &
@@ -48,10 +47,6 @@ export const HeatHelth = <T extends FieldValues>(
       setHeatValueRadio("");
       setShowContents(false);
       setShowTextContents(false);
-      props.restField(props.SecondRadio);
-      props.restField(props.ThardText);
-      // props.setValue(props.SecondRadio, "");
-      // props.setValue(props.ThardText, "");
     } else {
       if (childElement.current) {
         const childHeight = childElement.current?.clientHeight; // 対象要素の高さの取得
