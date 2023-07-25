@@ -63,7 +63,7 @@ export function TextFomattar(data: FormType) {
 退職意向:${data.LeavingOffice}
 理由:${data.TalkYourBoss == "ある" ? data.LeavingOffice_Text : ""}
 要望:${data.RequestsSupervisors}
-理由:${data.RequestsSupervisors == "ある" ? data.RequestsSupervisors_Text : ""}
+内容:${data.RequestsSupervisors == "ある" ? data.RequestsSupervisors_Text : ""}
 ファミリーフェスタの参加有無:${data.FamilyFest}
 景品について:${data.Freebie}`;
 
